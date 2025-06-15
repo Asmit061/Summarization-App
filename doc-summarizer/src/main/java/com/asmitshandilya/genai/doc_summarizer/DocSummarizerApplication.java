@@ -2,7 +2,7 @@ package com.asmitshandilya.genai.doc_summarizer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication
 public class DocSummarizerApplication {
 
 	public static void main(String[] args) {
