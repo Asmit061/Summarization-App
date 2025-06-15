@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: doc-summarizer
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  elasticsearch:
+    uris: http://localhost:9200
+    connection-timeout: 10s
+    socket-timeout: 30s
+
+# Elasticsearch Configuration
+elasticsearch:
+  host: localhost
+  port: 9200
+  cluster-name: elasticsearch-secure
+
+# Document Processing Configuration
+document:
+  chunk:
+    size: 1000
+    overlap: 200
+  upload:
+    max-size: 10MB
+    allowed-types: application/pdf
+
+# Embedding Service Configuration
+embedding:
+  service:
+    url: http://localhost:8080/embeddings
+    timeout: 30s
+
+# Logging Configuration
+logging:
+  level:
+    com.example.documentservice: DEBUG
+    org.elasticsearch: INFO
+    org.apache.pdfbox: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Management and Monitoring
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
